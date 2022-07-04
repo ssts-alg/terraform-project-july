@@ -3,3 +3,6 @@ terraform plan
 terraform apply -auto-approve
 terraform destroy
 terraform fmt
+
+data sources
+terraform console

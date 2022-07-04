@@ -13,13 +13,10 @@ resource "aws_eip" "eip" {
   vpc = true
 }
 
-
 resource "aws_nat_gateway" "gw" {
   allocation_id = aws_eip.eip.id
   subnet_id     = aws_subnet.public_subnets.*.id[0]
 }
-
-
 
 resource "aws_route_table" "private_rt" {
   vpc_id = aws_vpc.test_vpc.id
@@ -33,7 +30,6 @@ resource "aws_route_table" "private_rt" {
     Name = "${var.vpc_name}-private-rt"
   }
 }
-
 
 resource "aws_route_table_association" "private_association" {
   count          = length(var.private_subnet_cidr)
